@@ -1,0 +1,14 @@
+# scikit-learn is pinned: job_predictor.pkl was trained/pickled with 1.6.1
+scikit-learn==1.6.1
+xgboost
+joblib
+numpy
+pandas
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+pymupdf
+google-genai
+requests
+python-dotenv

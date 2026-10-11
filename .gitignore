@@ -1,0 +1,23 @@
+node_modules/
+.env
+.venv/
+__pycache__/
+.DS_Store
+
+# Secrets and local environment variants
+.env*
+!.env.example
+
+# Runtime candidate uploads and generated personal artifacts
+backend/uploads/resumes/*
+!backend/uploads/resumes/.gitkeep
+backend/ml_export/*.json
+ml/resume.pdf
+ml/resume.json
+ml/candidate_profile.json
+ml/github_data.json
+ml/questions.json
+ml/__pycache__/
+*.pyc
+*.pyo
+.DS_Store

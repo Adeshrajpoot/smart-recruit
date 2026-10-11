@@ -1,0 +1,27 @@
+# Optional one-command local stack for MongoDB + backend + ML.
+# Run the frontend separately:  cd frontend && npm install && npm run dev
+#   docker compose up --build
+services:
+  mongo:
+    image: mongo:7
+    volumes: [mongo-data:/data/db]
+    ports: ["27017:27017"]
+
+  ml:
+    build: ./ml
+    env_file: ./ml/.env
+    ports: ["8000:8000"]
+
+  backend:
+    build: ./backend
+    env_file: ./backend/.env
+    environment:
+      MONGO_URI: mongodb://mongo:27017/smartrecruit
+      ML_API_URL: http://ml:8000
+    depends_on: [mongo, ml]
+    ports: ["3500:3500"]
+    volumes: [backend-uploads:/app/uploads]
+
+volumes:
+  mongo-data:
+  backend-uploads:
