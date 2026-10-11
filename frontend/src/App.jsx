@@ -17,6 +17,7 @@ import CandidateAssessmentReview from "./pages/Recruiter/CandidateAssessmentRevi
 import CandidatesMonitoring from "./pages/Recruiter/CandidatesMonitoring";
 import CreateAssessment from "./pages/Recruiter/CreateAssessment";
 import RequireRecruiter from "./components/RequireRecruiter";
+import CandidateAssessmentResults from "./pages/Candidate/CandidateAssessmentResults";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/recruiter/candidates/:candidateId/review" element={<RequireRecruiter><CandidateAssessmentReview /></RequireRecruiter>} />
         <Route path="/recruiter/assessment/create" element={<RequireRecruiter><CreateAssessment /></RequireRecruiter>} />
         <Route path="/candidate/assessment-complete" element={<AssessmentComplete />} />
+        <Route path="/candidate/results" element={<CandidateAssessmentResults />} />
       </Routes>
     </Router>
   );

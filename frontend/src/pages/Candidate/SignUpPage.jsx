@@ -18,6 +18,7 @@ function SignUp({ role = "candidate" }) {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
@@ -25,7 +26,7 @@ function SignUp({ role = "candidate" }) {
       !formData.email ||
       !formData.password ||
       !formData.confirmPassword
-    ){
+    ) {
       setMessage("Please fill all the fields.");
       return;
     }
@@ -44,7 +45,7 @@ function SignUp({ role = "candidate" }) {
     setMessage("");
 
     try {
-        const response = await fetch(
+      const response = await fetch(
         `${API_URL}/api/auth/register`,
         {
           method: "POST",
@@ -95,7 +96,7 @@ function SignUp({ role = "candidate" }) {
       <div className="main-layout">
          <div className="illustration-section">
           <div className="illustration-container">
-            <img  src={signupImage} alt="SignUp Illustration"  className="illustration-img"/>
+            <img src={signupImage} alt="SignUp Illustration" className="illustration-img"/>
           </div>
         </div>
 
@@ -142,7 +143,7 @@ function SignUp({ role = "candidate" }) {
                   name="email"
                   placeholder="Enter your email"
                   value={formData.email}
-                  onChange={(e) =>setFormData({...formData,email: e.target.value,})}
+                  onChange={(e) => setFormData({...formData, email: e.target.value})}
                 />
               </div>
 
@@ -156,7 +157,7 @@ function SignUp({ role = "candidate" }) {
                     name="password"
                     placeholder="Create a password"
                     value={formData.password}
-                    onChange={(e) =>setFormData({ ...formData,password: e.target.value,})}
+                    onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                   />
                   <button
                     type="button"
@@ -177,7 +178,7 @@ function SignUp({ role = "candidate" }) {
                     name="confirmPassword"
                     placeholder="Confirm your password"
                     value={formData.confirmPassword}
-                    onChange={(e) =>setFormData({...formData,  confirmPassword: e.target.value,})}
+                    onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
                   />
                   <button
                     type="button"
@@ -193,7 +194,7 @@ function SignUp({ role = "candidate" }) {
                   <input
                     type="checkbox"
                     checked={formData.agreeTerms}
-                    onChange={(e) =>  setFormData({...formData, agreeTerms: e.target.checked,})}
+                    onChange={(e) => setFormData({...formData, agreeTerms: e.target.checked})}
                   />
                   <span>
                     I agree to the <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a>
@@ -206,7 +207,7 @@ function SignUp({ role = "candidate" }) {
                 type="submit"
                 disabled={loading}
               >
-                {loading ? "Creating Account...": "Create Account →"}
+                {loading ? "Creating Account..." : "Create Account →"}
               </button>
             </form>
 
@@ -283,7 +284,7 @@ const StyledWrapper = styled.div`
     width: 100%;
     max-width: 500px;
     height: 540px;
-    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -341,7 +342,7 @@ const StyledWrapper = styled.div`
     transition: all 0.2s ease;
 
     &.active {
-      background: #059669;
+      background: #2563EB;
       color: #ffffff;
       font-weight: 600;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -398,8 +399,8 @@ const StyledWrapper = styled.div`
 
   .form .input:focus {
     outline: none;
-    border-color: #059669;
-    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   }
 
   .password-wrapper {
@@ -440,14 +441,14 @@ const StyledWrapper = styled.div`
     input[type="checkbox"] {
       width: 16px;
       height: 16px;
-      accent-color: #059669;
+      accent-color: #2563EB;
       border: 1px solid #cbd5e1;
       border-radius: 4px;
       cursor: pointer;
     }
 
     a {
-      color: #059669;
+      color: #2563EB;
       text-decoration: none;
       font-weight: 500;
 
@@ -461,7 +462,7 @@ const StyledWrapper = styled.div`
     display: block;
     width: 100%;
     font-weight: 600;
-    background: #059669;
+    background: #2563EB;
     color: white;
     padding: 11px;
     margin: 16px 0 0 0;
@@ -474,7 +475,7 @@ const StyledWrapper = styled.div`
   }
 
   .signup-button:hover {
-    background: #047857;
+    background: #1D4ED8;
   }
 
   .signup-button:active {
@@ -490,7 +491,7 @@ const StyledWrapper = styled.div`
     text-align: center;
     font-size: 13px;
     margin-top: 12px;
-    color: #059669;
+    color: #2563EB;
     font-weight: 500;
   }
 
@@ -502,7 +503,7 @@ const StyledWrapper = styled.div`
   }
 
   .login-text span {
-    color: #059669;
+    color: #2563EB;
     font-weight: 600;
     cursor: pointer;
   }

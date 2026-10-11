@@ -80,96 +80,96 @@ function CreateAssessment() {
 
 
   return (
-    <div className="min-h-screen bg-[#111d18] text-white flex flex-col md:flex-row selection:bg-[#91b5a2] selection:text-white scroll-smooth font-sans">
-      <aside className="w-full md:w-72 border-b md:border-b-0 md:border-r border-emerald-950 bg-[#02140e] p-3 flex flex-col justify-between md:sticky md:top-0 md:h-screen shrink-0">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-800 flex flex-col md:flex-row selection:bg-[#2563EB] selection:text-white scroll-smooth font-sans">
+      <aside className="w-full md:w-72 border-b md:border-b-0 md:border-r border-blue-100 bg-white p-3 flex flex-col justify-between md:sticky md:top-0 md:h-screen shrink-0 shadow-sm">
         <div className="flex flex-col gap-6">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate("/")}>
-            <div className="w-7 h-7 bg-[#10B981] text-white rounded-lg flex items-center justify-center font-black text-sm shadow-md shadow-emerald-500/20">
+            <div className="w-7 h-7 bg-[#2563EB] text-white rounded-lg flex items-center justify-center font-black text-sm shadow-md shadow-blue-500/20">
               S
             </div>
             <div className="flex flex-col">
-              <span className="text-base font-bold tracking-tight text-white leading-none">
+              <span className="text-base font-bold tracking-tight text-[#0F172A] leading-none">
                 SmartRecruit
               </span>
-              <span className="text-[9px] font-mono tracking-widest text-[#94A3B8] uppercase mt-1">
+              <span className="text-[9px] font-mono tracking-widest text-slate-400 uppercase mt-1">
                 Recruiter Workspace
               </span>
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-1">
               Workspace
             </span>
             <button
               onClick={() => navigate("/recruiter/dashboard")}
-              className="flex items-center gap-3 text-xs font-mono text-slate-400 hover:text-white py-2 px-3 rounded-lg hover:bg-emerald-950/40 transition-colors text-left cursor-pointer"
+              className="flex items-center gap-3 text-xs font-mono text-slate-600 hover:text-[#0F172A] py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-left cursor-pointer border-none bg-transparent"
             >
               <i className="fa-solid fa-chart-pie text-xs"></i> Dashboard
             </button>
           </div>
           <div className="flex flex-col gap-2">
-            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-1">
               Assessments
             </span>
             <button
               onClick={() => navigate("/recruiter/candidates")}
-              className="flex items-center justify-between text-xs font-mono text-slate-400 hover:text-white py-2 px-3 rounded-lg hover:bg-emerald-950/40 transition-colors text-left cursor-pointer"
+              className="flex items-center justify-between text-xs font-mono text-slate-600 hover:text-[#0F172A] py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-left cursor-pointer border-none bg-transparent"
             >
               <div className="flex items-center gap-3">
                 <i className="fa-solid fa-user text-xs"></i> Candidates
               </div>
-              <span className="bg-emerald-950 border border-emerald-900/60 text-slate-300 font-bold px-1.5 py-0.2 rounded text-[10px]">{candidatesList.length}</span>
+              <span className="bg-blue-100 border border-blue-200 text-[#2563EB] font-bold px-1.5 py-0.2 rounded text-[10px]">{candidatesList.length}</span>
             </button>
             <button
-              className="flex items-center gap-3 text-xs font-mono text-slate-400 hover:text-white py-2 px-3 rounded-lg hover:bg-emerald-950/40 transition-colors text-left cursor-pointer"
+              className="flex items-center gap-3 text-xs font-mono text-slate-600 hover:text-[#0F172A] py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-left cursor-pointer border-none bg-transparent"
             >
               <i className="fa-solid fa-code text-xs"></i> Open roles
             </button>
             <button
-              className="flex items-center gap-3 text-xs font-mono text-slate-400 hover:text-white py-2 px-3 rounded-lg hover:bg-emerald-950/40 transition-colors text-left cursor-pointer"
+              className="flex items-center gap-3 text-xs font-mono text-slate-600 hover:text-[#0F172A] py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-left cursor-pointer border-none bg-transparent"
             >
               <i className="fa-solid fa-chart-bar text-xs"></i> Reports
             </button>
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 pt-4 border-t border-emerald-950">
-          <div className="p-2.5 bg-[#03261a]/40 border border-emerald-900/40 rounded-lg flex flex-col gap-1">
+        <div className="flex flex-col gap-3 pt-4 border-t border-blue-100">
+          <div className="p-2.5 bg-[#EFF6FF] border border-blue-100 rounded-lg flex flex-col gap-1">
             <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Current draft</span>
-            <span className="text-xs font-bold text-white">{assessmentName || "Untitled assessment"}</span>
-            <span className="text-[10px] font-mono text-[#10B981] mt-1">Draft details</span>
+            <span className="text-xs font-bold text-[#0F172A]">{assessmentName || "Untitled assessment"}</span>
+            <span className="text-[10px] font-mono text-[#2563EB] mt-1">Draft details</span>
           </div>
 
-          <div className="p-2.5 bg-[#0f1715] border border-emerald-900/40 rounded-lg flex items-center justify-between">
+          <div className="p-2.5 bg-slate-50 border border-blue-100 rounded-lg flex items-center justify-between">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="w-7 h-7 rounded-full bg-emerald-900/80 border border-emerald-700 text-emerald-200 flex items-center justify-center font-mono text-xs font-bold shrink-0">
+              <div className="w-7 h-7 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 shadow-sm">
                 {recruiterName.split(/\s+/).map((part) => part[0]).join("").slice(0, 2).toUpperCase()}
               </div>
               <div className="flex flex-col min-w-0">
-                <span className="text-xs font-bold text-white truncate">{recruiterName}</span>
-                <span className="text-[10px] font-mono text-slate-400 truncate">Recruiter</span>
+                <span className="text-xs font-bold text-[#0F172A] truncate">{recruiterName}</span>
+                <span className="text-[10px] font-mono text-slate-500 truncate">Recruiter</span>
               </div>
             </div>
-            <button className="text-slate-400 hover:text-white cursor-pointer">
+            <button className="text-slate-400 hover:text-[#0F172A] cursor-pointer bg-transparent border-none">
               <i className="fa-solid fa-ellipsis text-xs"></i>
             </button>
           </div>
         </div>
       </aside>
-      <main className="flex-1 flex flex-col min-w-0 bg-[#101c17]">
-        <header className="w-full border-b border-emerald-950 bg-[#021810]/80 backdrop-blur-md sticky top-0 z-50 px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs font-mono text-white">
-            <span className="hover:text-white cursor-pointer">Assessments</span>
+      <main className="flex-1 flex flex-col min-w-0 bg-[#F8FAFC]">
+        <header className="w-full border-b border-blue-100 bg-white/80 backdrop-blur-md sticky top-0 z-50 px-6 py-3 flex items-center justify-between shadow-sm">
+          <div className="flex items-center gap-2 text-xs font-mono text-slate-600">
+            <span className="hover:text-[#0F172A] cursor-pointer">Assessments</span>
             <span>›</span>
-            <span className="text-white">Create assessment</span>
+            <span className="text-[#0F172A] font-semibold">Create assessment</span>
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-              <span className="w-2 h-2 rounded-full bg-[#10B981]"></span>
+            <div className="flex items-center gap-2 text-xs font-mono text-slate-500">
+              <span className="w-2 h-2 rounded-full bg-[#2563EB]"></span>
               <span>Draft saved</span>
             </div>
-            <button className="bg-[#03261a] hover:bg-emerald-900/60 border border-emerald-900/50 text-slate-200 px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer">
+            <button className="bg-blue-50 hover:bg-blue-100 border border-blue-200 text-[#2563EB] px-3 py-1.5 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer">
               Save draft
             </button>
           </div>
@@ -179,251 +179,251 @@ function CreateAssessment() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex flex-col gap-1">
               <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">New assessment</span>
-              <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">Set up your assessment.</h1>
-              <p className="text-xs text-slate-400">Add the role details, choose your questions, then invite candidates.</p>
+              <h1 className="text-2xl sm:text-3xl font-bold text-[#0F172A] tracking-tight">Set up your assessment.</h1>
+              <p className="text-xs text-slate-600">Add the role details, choose your questions, then invite candidates.</p>
             </div>
-            <div className="flex items-center gap-2 text-xs font-mono text-slate-400 bg-[#1b2a24]/70 border border-emerald-900/40 px-3 py-2 rounded-xl">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#91b5a2]"></span>
+            <div className="flex items-center gap-2 text-xs font-mono text-slate-600 bg-blue-50/70 border border-blue-100 px-3 py-2 rounded-xl">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]"></span>
               <span>Draft - saved just now</span>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div className="flex items-center gap-3 p-2.5 bg-[#1b2a24]/70 border border-emerald-900/40 rounded-lg">
-              <div className="w-6 h-6 rounded-md bg-emerald-950 text-slate-400 flex items-center justify-center font-mono text-xs"><i className="fa-solid fa-file-lines"></i></div>
+            <div className="flex items-center gap-3 p-2.5 bg-blue-50/70 border border-blue-100 rounded-lg">
+              <div className="w-6 h-6 rounded-md bg-white border border-blue-200 text-[#2563EB] flex items-center justify-center font-mono text-xs"><i className="fa-solid fa-file-lines"></i></div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-mono text-slate-500 uppercase">Step 1</span>
-                <span className="text-xs font-bold text-white">Details</span>
+                <span className="text-[10px] font-mono text-slate-400 uppercase">Step 1</span>
+                <span className="text-xs font-bold text-[#0F172A]">Details</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-2.5 bg-[#1b2a24] border border-[#91b5a2]/60 rounded-lg shadow-lg shadow-emerald-950/50">
-              <div className="w-6 h-6 rounded-md bg-emerald-950 text-slate-400 flex items-center justify-center font-mono text-xs">2</div>
+            <div className="flex items-center gap-3 p-2.5 bg-white border border-[#2563EB] rounded-lg shadow-sm">
+              <div className="w-6 h-6 rounded-md bg-[#2563EB] text-white flex items-center justify-center font-mono text-xs">2</div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-mono text-[#91b5a2] uppercase">Step 2</span>
-                <span className="text-xs font-bold text-white">Questions</span>
+                <span className="text-[10px] font-mono text-[#2563EB] uppercase font-bold">Step 2</span>
+                <span className="text-xs font-bold text-[#0F172A]">Questions</span>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-2.5 bg-[#1b2a24]/70 border border-emerald-900/40 rounded-lg">
-              <div className="w-6 h-6 rounded-md bg-emerald-950 text-slate-400 flex items-center justify-center font-mono text-xs">3</div>
+            <div className="flex items-center gap-3 p-2.5 bg-blue-50/70 border border-blue-100 rounded-lg">
+              <div className="w-6 h-6 rounded-md bg-white border border-blue-200 text-slate-400 flex items-center justify-center font-mono text-xs">3</div>
               <div className="flex flex-col">
-                <span className="text-[10px] font-mono text-slate-500 uppercase">Step 3</span>
-                <span className="text-xs font-bold text-slate-400">Invite candidates</span>
+                <span className="text-[10px] font-mono text-slate-400 uppercase">Step 3</span>
+                <span className="text-xs font-bold text-slate-500">Invite candidates</span>
               </div>
             </div>
           </div>
 
-          <div className="bg-[#1b2a24]/70 border border-emerald-900/30 rounded-xl p-4 flex flex-col gap-3">
-            <div className="flex items-center justify-between border-b border-emerald-950 pb-3">
+          <div className="bg-white border border-blue-100 rounded-xl p-4 flex flex-col gap-3 shadow-sm">
+            <div className="flex items-center justify-between border-b border-blue-100 pb-3">
               <div className="flex items-center gap-3">
-                <span className="w-6 h-6 rounded-md bg-[#91b5a2] text-[#16241e] font-bold flex items-center justify-center text-xs font-mono">1</span>
-                <h2 className="text-sm font-bold text-white uppercase tracking-wider">Assessment details</h2>
-                <p className="text-xs text-slate-400">Set the basics candidates will see.</p>
+                <span className="w-6 h-6 rounded-md bg-[#2563EB] text-white font-bold flex items-center justify-center text-xs font-mono shadow-sm">1</span>
+                <h2 className="text-sm font-bold text-[#0F172A] uppercase tracking-wider">Assessment details</h2>
+                <p className="text-xs text-slate-500">Set the basics candidates will see.</p>
               </div>
-              <span className="text-[10px] font-mono text-slate-500">Required fields marked *</span>
+              <span className="text-[10px] font-mono text-slate-400">Required fields marked *</span>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] font-mono text-slate-400">Assessment name *</label>
+                <label className="text-[11px] font-mono text-slate-600">Assessment name *</label>
                 <input
                   type="text"
                   placeholder="e.g. Backend Developer Assessment"
                   value={assessmentName}
                   onChange={(e) => setAssessmentName(e.target.value)}
-                  className="bg-[#111e18] border border-emerald-900/50 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-700 font-sans"
+                  className="bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-[#2563EB] font-sans"
                 />
-                <span className="text-[10px] font-mono text-slate-500">Saved to the backend with this assessment.</span>
+                <span className="text-[10px] font-mono text-slate-400">Saved to the backend with this assessment.</span>
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] font-mono text-slate-400">Target role *</label>
+                <label className="text-[11px] font-mono text-slate-600">Target role *</label>
                 <input
                   type="text"
                   placeholder="e.g. Backend Developer"
                   value={targetRole}
                   onChange={(e) => setTargetRole(e.target.value)}
-                  className="bg-[#111e18] border border-emerald-900/50 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-700 font-sans"
+                  className="bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-[#2563EB] font-sans"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] font-mono text-slate-400">Time limit *</label>
+                <label className="text-[11px] font-mono text-slate-600">Time limit *</label>
                 <input
                   type="number"
                   min="1"
                   placeholder="Duration in minutes"
                   value={timeLimit}
                   onChange={(e) => setTimeLimit(e.target.value)}
-                  className="bg-[#111e18] border border-emerald-900/50 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-700 font-sans"
+                  className="bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-[#2563EB] font-sans"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[11px] font-mono text-slate-400">Recruitment drive</label>
+                <label className="text-[11px] font-mono text-slate-600">Recruitment drive</label>
                 <input
                   type="text"
                   placeholder="e.g. October engineering hiring drive"
                   value={recruitmentDrive}
                   onChange={(e) => setRecruitmentDrive(e.target.value)}
-                  className="bg-[#111e18] border border-emerald-900/50 rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-emerald-700 font-sans"
+                  className="bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-[#2563EB] font-sans"
                 />
               </div>
             </div>
           </div>
 
-          <div className="bg-[#1b2a24]/70 border border-emerald-900/30 rounded-xl p-4 flex flex-col gap-3">
-            <div className="flex items-center justify-between border-b border-emerald-950 pb-3">
+          <div className="bg-white border border-blue-100 rounded-xl p-4 flex flex-col gap-3 shadow-sm">
+            <div className="flex items-center justify-between border-b border-blue-100 pb-3">
               <div className="flex items-center gap-3">
-                <span className="w-6 h-6 rounded-md bg-[#91b5a2] text-[#16241e] font-bold flex items-center justify-center text-xs font-mono">2</span>
-                <h2 className="text-sm font-bold text-white uppercase tracking-wider">Questions</h2>
+                <span className="w-6 h-6 rounded-md bg-[#2563EB] text-white font-bold flex items-center justify-center text-xs font-mono shadow-sm">2</span>
+                <h2 className="text-sm font-bold text-[#0F172A] uppercase tracking-wider">Questions</h2>
               </div>
-              <span className="text-[10px] font-mono text-slate-400">Template preview only</span>
+              <span className="text-[10px] font-mono text-slate-500">Template preview only</span>
             </div>
 
-            <p className="text-xs text-slate-400">Preview only: the sample questions shown below are not yet connected to saved Question records. The form currently saves the assessment as a draft without these questions.</p>
+            <p className="text-xs text-slate-600">Preview only: the sample questions shown below are not yet connected to saved Question records. The form currently saves the assessment as a draft without these questions.</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 py-1">
-              <div className="p-2.5 bg-[#111e18] border border-emerald-900/40 rounded-lg flex items-center justify-between">
+              <div className="p-2.5 bg-blue-50/50 border border-blue-100 rounded-lg flex items-center justify-between">
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold text-white">Multiple choice</span>
-                  <span className="text-[10px] font-mono text-slate-400">4 questions · 20 points</span>
+                  <span className="text-xs font-bold text-[#0F172A]">Multiple choice</span>
+                  <span className="text-[10px] font-mono text-slate-500">4 questions · 20 points</span>
                 </div>
-                <span className="text-[10px] font-mono text-[#91b5a2] bg-emerald-950 px-2 py-1 rounded">Included</span>
+                <span className="text-[10px] font-mono text-[#2563EB] bg-blue-100 px-2 py-1 rounded">Included</span>
               </div>
 
-              <div className="p-2.5 bg-[#111e18] border border-emerald-900/40 rounded-lg flex items-center justify-between">
+              <div className="p-2.5 bg-blue-50/50 border border-blue-100 rounded-lg flex items-center justify-between">
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold text-white">Spoken response</span>
-                  <span className="text-[10px] font-mono text-slate-400">1 prompt · 10 points</span>
+                  <span className="text-xs font-bold text-[#0F172A]">Spoken response</span>
+                  <span className="text-[10px] font-mono text-slate-500">1 prompt · 10 points</span>
                 </div>
-                <span className="text-[10px] font-mono text-[#91b5a2] bg-emerald-950 px-2 py-1 rounded">Included</span>
+                <span className="text-[10px] font-mono text-[#2563EB] bg-blue-100 px-2 py-1 rounded">Included</span>
               </div>
 
-              <div className="p-2.5 bg-[#111e18] border border-emerald-900/40 rounded-lg flex items-center justify-between">
+              <div className="p-2.5 bg-blue-50/50 border border-blue-100 rounded-lg flex items-center justify-between">
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold text-white">Coding challenge</span>
-                  <span className="text-[10px] font-mono text-slate-400">1 task · 20 points</span>
+                  <span className="text-xs font-bold text-[#0F172A]">Coding challenge</span>
+                  <span className="text-[10px] font-mono text-slate-500">1 task · 20 points</span>
                 </div>
-                <span className="text-[10px] font-mono text-[#91b5a2] bg-emerald-950 px-2 py-1 rounded">Included</span>
+                <span className="text-[10px] font-mono text-[#2563EB] bg-blue-100 px-2 py-1 rounded">Included</span>
               </div>
             </div>
 
             <div className="flex items-center justify-between pt-2">
-              <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Assessment questions</span>
-              <span className="text-[10px] font-mono text-slate-500">Review or adjust before inviting candidates</span>
+              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Assessment questions</span>
+              <span className="text-[10px] font-mono text-slate-400">Review or adjust before inviting candidates</span>
             </div>
 
             <div className="flex flex-col gap-2">
-              <div className="p-2.5 bg-[#111e18] border border-emerald-900/30 rounded-lg flex items-center justify-between gap-4">
+              <div className="p-2.5 bg-blue-50/40 border border-blue-100 rounded-lg flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-slate-500">01</span>
+                  <span className="text-xs font-mono text-slate-400">01</span>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-white">Which statement best describes REST APIs and the GET and POST methods?</span>
-                    <span className="text-[10px] font-mono text-slate-400">Multiple choice · 4 options · 5 pts</span>
+                    <span className="text-xs font-bold text-[#0F172A]">Which statement best describes REST APIs and the GET and POST methods?</span>
+                    <span className="text-[10px] font-mono text-slate-500">Multiple choice · 4 options · 5 pts</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
-                  <span className="text-xs font-mono text-slate-300">5 pts</span>
-                  <i className="fa-solid fa-ellipsis text-xs text-slate-500 cursor-pointer"></i>
+                  <span className="text-xs font-mono text-slate-600">5 pts</span>
+                  <i className="fa-solid fa-ellipsis text-xs text-slate-400 cursor-pointer"></i>
                 </div>
               </div>
 
-              <div className="p-2.5 bg-[#111e18] border border-emerald-900/30 rounded-lg flex items-center justify-between gap-4">
+              <div className="p-2.5 bg-blue-50/40 border border-blue-100 rounded-lg flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-slate-500">02</span>
+                  <span className="text-xs font-mono text-slate-400">02</span>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-white">Which statement best describes asynchronous JavaScript?</span>
-                    <span className="text-[10px] font-mono text-slate-400">Multiple choice · 4 options · 5 pts</span>
+                    <span className="text-xs font-bold text-[#0F172A]">Which statement best describes asynchronous JavaScript?</span>
+                    <span className="text-[10px] font-mono text-slate-500">Multiple choice · 4 options · 5 pts</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
-                  <span className="text-xs font-mono text-slate-300">5 pts</span>
-                  <i className="fa-solid fa-ellipsis text-xs text-slate-500 cursor-pointer"></i>
+                  <span className="text-xs font-mono text-slate-600">5 pts</span>
+                  <i className="fa-solid fa-ellipsis text-xs text-slate-400 cursor-pointer"></i>
                 </div>
               </div>
 
-              <div className="p-2.5 bg-[#111e18] border border-emerald-900/30 rounded-lg flex items-center justify-between gap-4">
+              <div className="p-2.5 bg-blue-50/40 border border-blue-100 rounded-lg flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-slate-500">03</span>
+                  <span className="text-xs font-mono text-slate-400">03</span>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-white">Which approach uses event delegation to handle clicks on child elements?</span>
-                    <span className="text-[10px] font-mono text-slate-400">Multiple choice · 4 options · 5 pts</span>
+                    <span className="text-xs font-bold text-[#0F172A]">Which approach uses event delegation to handle clicks on child elements?</span>
+                    <span className="text-[10px] font-mono text-slate-500">Multiple choice · 4 options · 5 pts</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
-                  <span className="text-xs font-mono text-slate-300">5 pts</span>
-                  <i className="fa-solid fa-ellipsis text-xs text-slate-500 cursor-pointer"></i>
+                  <span className="text-xs font-mono text-slate-600">5 pts</span>
+                  <i className="fa-solid fa-ellipsis text-xs text-slate-400 cursor-pointer"></i>
                 </div>
               </div>
 
-              <div className="p-2.5 bg-[#111e18] border border-emerald-900/30 rounded-lg flex items-center justify-between gap-4">
+              <div className="p-2.5 bg-blue-50/40 border border-blue-100 rounded-lg flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-slate-500">04</span>
+                  <span className="text-xs font-mono text-slate-400">04</span>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-white">Which metric is part of Core Web Vitals?</span>
-                    <span className="text-[10px] font-mono text-slate-400">Multiple choice · 4 options · 5 pts</span>
+                    <span className="text-xs font-bold text-[#0F172A]">Which metric is part of Core Web Vitals?</span>
+                    <span className="text-[10px] font-mono text-slate-500">Multiple choice · 4 options · 5 pts</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
-                  <span className="text-xs font-mono text-slate-300">5 pts</span>
-                  <i className="fa-solid fa-ellipsis text-xs text-slate-500 cursor-pointer"></i>
+                  <span className="text-xs font-mono text-slate-600">5 pts</span>
+                  <i className="fa-solid fa-ellipsis text-xs text-slate-400 cursor-pointer"></i>
                 </div>
               </div>
 
-              <div className="p-2.5 bg-[#111e18] border border-emerald-900/30 rounded-lg flex items-center justify-between gap-4">
+              <div className="p-2.5 bg-blue-50/40 border border-blue-100 rounded-lg flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-slate-500">05</span>
+                  <span className="text-xs font-mono text-slate-400">05</span>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-white">Explain the difference between synchronous and asynchronous JavaScript.</span>
-                    <span className="text-[10px] font-mono text-slate-400">Spoken response · 2 min max · 10 pts</span>
+                    <span className="text-xs font-bold text-[#0F172A]">Explain the difference between synchronous and asynchronous JavaScript.</span>
+                    <span className="text-[10px] font-mono text-slate-500">Spoken response · 2 min max · 10 pts</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
-                  <span className="text-xs font-mono text-slate-300">10 pts</span>
-                  <i className="fa-solid fa-ellipsis text-xs text-slate-500 cursor-pointer"></i>
+                  <span className="text-xs font-mono text-slate-600">10 pts</span>
+                  <i className="fa-solid fa-ellipsis text-xs text-slate-400 cursor-pointer"></i>
                 </div>
               </div>
 
-              <div className="p-2.5 bg-[#111e18] border border-emerald-900/30 rounded-lg flex items-center justify-between gap-4">
+              <div className="p-2.5 bg-blue-50/40 border border-blue-100 rounded-lg flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs font-mono text-slate-500">06</span>
+                  <span className="text-xs font-mono text-slate-400">06</span>
                   <div className="flex flex-col">
-                    <span className="text-xs font-bold text-white">Reverse a string and consider the algorithm's runtime complexity.</span>
-                    <span className="text-[10px] font-mono text-slate-400">Coding challenge · In-browser editor · 20 pts</span>
+                    <span className="text-xs font-bold text-[#0F172A]">Reverse a string and consider the algorithm's runtime complexity.</span>
+                    <span className="text-[10px] font-mono text-slate-500">Coding challenge · In-browser editor · 20 pts</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
-                  <span className="text-xs font-mono text-slate-300">20 pts</span>
-                  <i className="fa-solid fa-ellipsis text-xs text-slate-500 cursor-pointer"></i>
+                  <span className="text-xs font-mono text-slate-600">20 pts</span>
+                  <i className="fa-solid fa-ellipsis text-xs text-slate-400 cursor-pointer"></i>
                 </div>
               </div>
 
-              <button className="w-full py-2.5 bg-[#111e18] hover:bg-emerald-950/50 border border-dashed border-emerald-900/50 rounded-xl text-xs font-mono text-slate-400 hover:text-white transition-colors cursor-pointer text-center">
+              <button className="w-full py-2.5 bg-white hover:bg-blue-50 border border-dashed border-blue-200 rounded-xl text-xs font-mono text-slate-600 hover:text-[#0F172A] transition-colors cursor-pointer text-center">
                 + Add a question
               </button>
             </div>
           </div>
-          <div className="bg-[#1b2a24]/70 border border-emerald-900/30 rounded-xl p-4 flex flex-col gap-3">
-            <div className="flex items-center justify-between border-b border-emerald-950 pb-3">
+          <div className="bg-white border border-blue-100 rounded-xl p-4 flex flex-col gap-3 shadow-sm">
+            <div className="flex items-center justify-between border-b border-blue-100 pb-3">
               <div className="flex items-center gap-3">
-                <span className="w-6 h-6 rounded-md bg-[#91b5a2] text-[#16241e] font-bold flex items-center justify-center text-xs font-mono">3</span>
-                <h2 className="text-sm font-bold text-white uppercase tracking-wider">Invite candidates</h2>
+                <span className="w-6 h-6 rounded-md bg-[#2563EB] text-white font-bold flex items-center justify-center text-xs font-mono shadow-sm">3</span>
+                <h2 className="text-sm font-bold text-[#0F172A] uppercase tracking-wider">Invite candidates</h2>
               </div>
-              <span className="text-[10px] font-mono text-slate-400">{candidatesList.length} candidates</span>
+              <span className="text-[10px] font-mono text-slate-500">{candidatesList.length} candidates</span>
             </div>
-            <p className="text-xs text-slate-400">Email addresses are currently a local draft list; invitation delivery is not yet connected to the backend.</p>
+            <p className="text-xs text-slate-600">Email addresses are currently a local draft list; invitation delivery is not yet connected to the backend.</p>
             <form onSubmit={handleAddCandidate} className="flex flex-col sm:flex-row gap-3 pt-2">
               <input
                 type="email"
                 placeholder="Candidate email address"
                 value={candidateEmail}
                 onChange={(e) => setCandidateEmail(e.target.value)}
-                className="flex-1 bg-[#111e18] border border-emerald-900/50 rounded-lg px-3 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-700 font-sans"
+                className="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#2563EB] font-sans"
               />
               <div className="flex items-center gap-2">
-                <button type="submit" className="bg-[#1b2a24] hover:bg-emerald-900/60 border border-emerald-900/50 text-slate-200 px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer">
+                <button type="submit" className="bg-blue-50 hover:bg-blue-100 border border-blue-200 text-[#2563EB] px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer">
                   + Add candidate
                 </button>
-                <button type="button" className="bg-[#111e18] hover:bg-emerald-950 border border-emerald-900/50 text-slate-300 px-4 py-2 rounded-lg text-xs font-mono transition-all cursor-pointer">
+                <button type="button" className="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs font-mono transition-all cursor-pointer shadow-sm">
                   Upload CSV
                 </button>
               </div>
@@ -431,38 +431,38 @@ function CreateAssessment() {
 
             <div className="flex flex-wrap gap-2 pt-2">
               {candidatesList.map((email, idx) => (
-                <div key={idx} className="flex items-center gap-2 bg-[#111e18] border border-emerald-900/40 px-3 py-1.5 rounded-lg text-xs font-mono">
-                  <span className="w-5 h-5 rounded-full bg-[#38594b] text-white flex items-center justify-center text-[10px] font-bold">
+                <div key={idx} className="flex items-center gap-2 bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-lg text-xs font-mono">
+                  <span className="w-5 h-5 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-[10px] font-bold shadow-sm">
                     {email.substring(0, 2).toUpperCase()}
                   </span>
-                  <span className="text-slate-200">{email}</span>
-                  <button type="button" onClick={() => removeCandidate(idx)} className="text-slate-500 hover:text-slate-300 ml-1 cursor-pointer">×</button>
+                  <span className="text-slate-700">{email}</span>
+                  <button type="button" onClick={() => removeCandidate(idx)} className="text-slate-400 hover:text-slate-600 ml-1 cursor-pointer bg-transparent border-none">×</button>
                 </div>
               ))}
             </div>
-            <div className="p-3 bg-[#111e18] border border-emerald-900/40 rounded-lg flex items-center justify-between mt-2">
+            <div className="p-3 bg-blue-50/40 border border-blue-100 rounded-lg flex items-center justify-between mt-2">
               <div className="flex items-center gap-3">
-                <div className="w-7 h-7 rounded-lg bg-emerald-950 border border-emerald-900/40 flex items-center justify-center text-[#91b5a2] text-xs">
+                <div className="w-7 h-7 rounded-lg bg-blue-100 border border-blue-200 flex items-center justify-center text-[#2563EB] text-xs">
                   <i className="fa-solid fa-shield"></i>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold text-white">Standard assessment safeguards</span>
-                  <span className="text-[10px] font-mono text-slate-400">Camera check and focus monitoring are enabled.</span>
+                  <span className="text-xs font-bold text-[#0F172A]">Standard assessment safeguards</span>
+                  <span className="text-[10px] font-mono text-slate-500">Camera check and focus monitoring are enabled.</span>
                 </div>
               </div>
-              <span className="text-xs font-mono text-slate-300">On by default</span>
+              <span className="text-xs font-mono text-[#2563EB] font-semibold">On by default</span>
             </div>
           </div>
 
           {errorMessage && (
-            <div className="text-xs text-red-400 font-mono text-center">
+            <div className="text-xs text-red-600 font-mono text-center">
               {errorMessage}
             </div>
           )}
 
-          <div className="pt-6 border-t border-emerald-950 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-xs font-mono text-slate-400">
-              <span className="text-[#91b5a2] font-bold">Ready to save draft</span>
+          <div className="pt-6 border-t border-blue-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2 text-xs font-mono text-slate-500">
+              <span className="text-[#2563EB] font-bold">Ready to save draft</span>
               <span>·</span>
               <span>{assessmentName}</span>
               <span>·</span>
@@ -472,14 +472,14 @@ function CreateAssessment() {
             </div>
 
             <div className="flex items-center gap-3">
-              <button type="button" onClick={handlePublishAssessment} disabled={loading} className="bg-[#1b2a24] hover:bg-emerald-900/60 border border-emerald-900/50 text-slate-200 px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer disabled:opacity-50">
+              <button type="button" onClick={handlePublishAssessment} disabled={loading} className="bg-blue-50 hover:bg-blue-100 border border-blue-200 text-[#2563EB] px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer disabled:opacity-50">
                 Save draft
               </button>
               <button
                 type="button"
                 onClick={handlePublishAssessment}
                 disabled={loading}
-                className="bg-[#91b5a2] hover:bg-[#a1c0ae] text-[#16241e] px-5 py-2 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer shadow-lg shadow-emerald-900/30 disabled:opacity-50"
+                className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-5 py-2 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer shadow-lg shadow-blue-500/20 disabled:opacity-50 border-none"
               >
                 {loading ? "Creating..." : "Create assessment →"}
               </button>
@@ -491,9 +491,9 @@ function CreateAssessment() {
               <span>SmartRecruit · Recruiter workspace</span>
             </div>
             <div className="flex gap-4">
-              <span className="hover:text-slate-200 cursor-pointer">Candidate privacy</span>
+              <span className="hover:text-[#0F172A] cursor-pointer">Candidate privacy</span>
               <span>·</span>
-              <span className="hover:text-slate-200 cursor-pointer">Help</span>
+              <span className="hover:text-[#0F172A] cursor-pointer">Help</span>
             </div>
           </footer>
 

@@ -40,7 +40,7 @@ function CandidatesMonitoring() {
 
   const filteredCandidates = candidatesList.filter((candidate) => {
     const matchesSearch = (candidate.name || "").toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          (candidate.email || "").toLowerCase().includes(searchQuery.toLowerCase());
+                        (candidate.email || "").toLowerCase().includes(searchQuery.toLowerCase());
     const matchesStatus = statusFilter === "All" || candidate.status === statusFilter;
     const numericPercentage = parseInt(candidate.percentage, 10) || 0;
     const matchesProgress = progressFilter === "All" || 
@@ -58,109 +58,109 @@ function CandidatesMonitoring() {
   const participationRate = candidatesList.length ? Math.round((startedCount / candidatesList.length) * 100) : 0;
 
   return (
-    <div className="min-h-screen bg-[#0e1915] text-[#e4e8e3] flex flex-col md:flex-row selection:bg-[#83b58a] selection:text-[#15231d] scroll-smooth font-sans">
-      <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-emerald-950 bg-[#02140e] p-6 flex flex-col justify-between md:sticky md:top-0 md:h-screen shrink-0">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-800 flex flex-col md:flex-row selection:bg-[#2563EB] selection:text-white scroll-smooth font-sans">
+      <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-blue-100 bg-white p-6 flex flex-col justify-between md:sticky md:top-0 md:h-screen shrink-0">
         <div className="flex flex-col gap-8">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate("/")}>
-            <div className="w-7 h-7 bg-[#10B981] text-white rounded-lg flex items-center justify-center font-black text-sm shadow-md shadow-emerald-500/20">
+            <div className="w-7 h-7 bg-[#2563EB] text-white rounded-lg flex items-center justify-center font-black text-sm shadow-md shadow-blue-500/20">
               S
             </div>
             <div className="flex flex-col">
-              <span className="text-base font-bold tracking-tight text-white leading-none">
+              <span className="text-base font-bold tracking-tight text-[#0F172A] leading-none">
                 SmartRecruit
               </span>
-              <span className="text-[9px] font-mono tracking-widest text-[#94A3B8] uppercase mt-1">
+              <span className="text-[9px] font-mono tracking-widest text-slate-400 uppercase mt-1">
                 Recruiter Workspace
               </span>
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-1">
               Workspace
             </span>
             <button
               onClick={() => navigate("/recruiter/dashboard")}
-              className="flex items-center gap-3 text-xs font-mono text-slate-400 hover:text-white py-2 px-3 rounded-lg hover:bg-emerald-950/40 transition-colors text-left cursor-pointer"
+              className="flex items-center gap-3 text-xs font-mono text-slate-600 hover:text-[#0F172A] py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-left cursor-pointer border-none bg-transparent"
             >
               <i className="fa-solid fa-chart-pie text-xs"></i> Dashboard
             </button>
           </div>
 
           <div className="flex flex-col gap-2">
-            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-1">
               Assessments
             </span>
             <button
-              className="flex items-center justify-between text-xs font-mono text-white bg-emerald-950/60 border border-emerald-900/50 py-2 px-3 rounded-lg font-bold text-left cursor-pointer"
+              className="flex items-center justify-between text-xs font-mono text-[#2563EB] bg-blue-50 border border-blue-200 py-2 px-3 rounded-lg font-bold text-left cursor-pointer border-none"
             >
               <div className="flex items-center gap-3">
                 <i className="fa-solid fa-user text-xs"></i> Candidates
               </div>
-              <span className="bg-[#10B981] text-black font-bold px-1.5 py-0.2 rounded text-[10px]">{candidatesList.length}</span>           </button>
+              <span className="bg-[#2563EB] text-white font-bold px-1.5 py-0.2 rounded text-[10px]">{candidatesList.length}</span>          </button>
             <button
-              className="flex items-center gap-3 text-xs font-mono text-slate-400 hover:text-white py-2 px-3 rounded-lg hover:bg-emerald-950/40 transition-colors text-left cursor-pointer"
+              className="flex items-center gap-3 text-xs font-mono text-slate-600 hover:text-[#0F172A] py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-left cursor-pointer border-none bg-transparent"
             >
               <i className="fa-solid fa-code text-xs"></i> Open roles
             </button>
             <button
-              className="flex items-center gap-3 text-xs font-mono text-slate-400 hover:text-white py-2 px-3 rounded-lg hover:bg-emerald-950/40 transition-colors text-left cursor-pointer"
+              className="flex items-center gap-3 text-xs font-mono text-slate-600 hover:text-[#0F172A] py-2 px-3 rounded-lg hover:bg-blue-50 transition-colors text-left cursor-pointer border-none bg-transparent"
             >
               <i className="fa-solid fa-chart-bar text-xs"></i> Reports
             </button>
           </div>
 
-          <div className="flex flex-col p-3 bg-[#03261a]/60 border border-emerald-900/40 rounded-xl gap-2">
-            <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Recruiter overview</span>
-            <span className="text-xs font-bold text-white">All recruitment drives</span>
-            <span className="text-[10px] font-mono text-slate-400">Candidate data linked to your account</span>
+          <div className="flex flex-col p-3 bg-[#EFF6FF] border border-blue-100 rounded-xl gap-2">
+            <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Recruiter overview</span>
+            <span className="text-xs font-bold text-[#0F172A]">All recruitment drives</span>
+            <span className="text-[10px] font-mono text-slate-500">Candidate data linked to your account</span>
 
-            <div className="flex justify-between items-center text-[11px] font-mono pt-2 border-t border-emerald-900/40 mt-1">
-              <span className="text-slate-400">{candidatesList.length} candidates</span>
-              <span className="text-[#10B981] font-bold">{inProgressCount} in progress</span>
+            <div className="flex justify-between items-center text-[11px] font-mono pt-2 border-t border-blue-100 mt-1">
+              <span className="text-slate-500">{candidatesList.length} candidates</span>
+              <span className="text-[#2563EB] font-bold">{inProgressCount} in progress</span>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 pt-4 border-t border-emerald-950">
-          <div className="p-3 bg-[#03261a]/30 border border-emerald-900/30 rounded-xl flex flex-col gap-1">
-            <span className="text-[10px] font-mono text-white font-semibold">Need a help?</span>
-            <p className="text-[10px] text-slate-400 leading-tight">Get help managing candidates and assessment reviews.</p>
-            <span className="text-[10px] font-mono text-[#10B981] hover:underline cursor-pointer mt-1">Visit help center →</span>
+        <div className="flex flex-col gap-3 pt-4 border-t border-blue-100">
+          <div className="p-3 bg-blue-50/50 border border-blue-100 rounded-xl flex flex-col gap-1">
+            <span className="text-[10px] font-mono text-[#0F172A] font-semibold">Need a help?</span>
+            <p className="text-[10px] text-slate-600 leading-tight">Get help managing candidates and assessment reviews.</p>
+            <span className="text-[10px] font-mono text-[#2563EB] hover:underline cursor-pointer mt-1">Visit help center →</span>
           </div>
 
-          <div className="p-3 bg-[#03261a]/40 border border-emerald-900/40 rounded-xl flex items-center justify-between">
+          <div className="p-3 bg-[#EFF6FF]/60 border border-blue-100 rounded-xl flex items-center justify-between">
             <div className="flex items-center gap-3 min-w-0">
-              <div className="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center font-mono text-xs font-bold shrink-0">
+              <div className="w-7 h-7 rounded-full bg-[#2563EB] text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 shadow-sm">
                 {recruiterName.split(/\s+/).map((part) => part[0]).join("").slice(0, 2).toUpperCase()}
               </div>
               <div className="flex flex-col min-w-0">
-                <span className="text-xs font-bold text-white truncate">{recruiterName}</span>
-                <span className="text-[10px] font-mono text-slate-400 truncate">Recruiter</span>
+                <span className="text-xs font-bold text-[#0F172A] truncate">{recruiterName}</span>
+                <span className="text-[10px] font-mono text-slate-500 truncate">Recruiter</span>
               </div>
             </div>
-            <button className="text-slate-400 hover:text-white cursor-pointer">
+            <button className="text-slate-400 hover:text-[#0F172A] cursor-pointer bg-transparent border-none">
               <i className="fa-solid fa-ellipsis text-xs"></i>
             </button>
           </div>
         </div>
       </aside>
 
-      <main className="flex-1 flex flex-col min-w-0 bg-[#0e1915]">
-        <header className="w-full border-b border-[#26352e] bg-[#0e1915]/95 backdrop-blur-md sticky top-0 z-50 px-6 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs font-mono text-[#a4aea8]">
-            <span className="hover:text-white cursor-pointer">Assessments</span>
+      <main className="flex-1 flex flex-col min-w-0 bg-[#F8FAFC]">
+        <header className="w-full border-b border-blue-100 bg-white/95 backdrop-blur-md sticky top-0 z-50 px-6 py-3 flex items-center justify-between shadow-sm">
+          <div className="flex items-center gap-2 text-xs font-mono text-slate-500">
+            <span className="hover:text-[#0F172A] cursor-pointer">Assessments</span>
             <span>›</span>
-            <span className="hover:text-white cursor-pointer">All candidates</span>
+            <span className="hover:text-[#0F172A] cursor-pointer">All candidates</span>
             <span>›</span>
-            <span className="text-white">Candidates</span>
+            <span className="text-[#0F172A] font-semibold">Candidates</span>
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 bg-[#1b2a24] border border-[#2b3b33] px-2.5 py-1 rounded-full text-xs font-mono">
-              <div className="w-5 h-5 rounded-full bg-[#30483c] text-[#dce5dd] flex items-center justify-center text-[10px] font-bold">
+            <div className="flex items-center gap-2 bg-[#EFF6FF] border border-blue-100 px-2.5 py-1 rounded-full text-xs font-mono">
+              <div className="w-5 h-5 rounded-full bg-[#2563EB] text-white flex items-center justify-center text-[10px] font-bold shadow-sm">
                 {recruiterName.split(/\s+/).map((part) => part[0]).join("").slice(0, 2).toUpperCase()}
               </div>
-              <span className="text-white">{recruiterName}</span>
+              <span className="text-[#0F172A] font-medium">{recruiterName}</span>
             </div>
           </div>
         </header>
@@ -168,98 +168,98 @@ function CandidatesMonitoring() {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex flex-col gap-1">
               <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">Candidate activity</span>
-              <h1 className="text-4xl sm:text-5xl text-white tracking-tight">Candidates & monitoring</h1>
-              <p className="text-xs text-slate-400">See who's working, who's finished, and where each candidate is in the assessment.</p>
+              <h1 className="text-4xl sm:text-5xl text-[#0F172A] tracking-tight font-extrabold">Candidates & monitoring</h1>
+              <p className="text-xs text-slate-600">See who's working, who's finished, and where each candidate is in the assessment.</p>
             </div>
 
             <div className="flex items-center gap-3">
-              <button className="bg-[#202f28] hover:bg-[#293a31] border border-[#33443b] text-[#d3dbd5] px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer flex items-center gap-2">
+              <button className="bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs font-mono font-medium transition-all cursor-pointer flex items-center gap-2 shadow-sm">
                 <i className="fa-solid fa-sliders text-xs"></i> Assessment settings
               </button>
-              <button onClick={() => navigate("/recruiter/assessments/create")} className="bg-[#7fb887] hover:bg-[#8bc392] text-[#15231d] px-4 py-2 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-2">
+              <button onClick={() => navigate("/recruiter/assessments/create")} className="bg-[#2563EB] hover:bg-[#1D4ED8] text-white px-4 py-2 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer flex items-center gap-2 shadow-lg shadow-blue-500/20 border-none">
                 <i className="fa-solid fa-plus text-xs"></i> Add candidates
               </button>
             </div>
           </div>
-          <div className="p-3 bg-[#02140e] border border-[#2b3b33] rounded-xl flex items-center gap-2 text-xs font-mono">
-            <span className="text-[#dce4dd] font-bold">Candidate activity across your recruitment drives</span>
-            <span className="text-slate-600">·</span>
-            <span className="text-slate-400">Loaded from the backend</span>
+          <div className="p-3 bg-white border border-blue-100 rounded-xl flex items-center gap-2 text-xs font-mono shadow-sm">
+            <span className="text-[#0F172A] font-bold">Candidate activity across your recruitment drives</span>
+            <span className="text-slate-300">·</span>
+            <span className="text-slate-500">Loaded from the backend</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-            <div className="p-5 bg-[#02140e] border border-[#2b3b33] rounded-2xl flex flex-col justify-between gap-4">
+            <div className="p-5 bg-white border border-blue-100 rounded-2xl flex flex-col justify-between gap-4 shadow-sm">
               <div className="flex justify-between items-center">
                 <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">Total candidates</span>
-                <div className="w-7 h-7 rounded-lg bg-[#26372f] border border-[#34443c] flex items-center justify-center text-[#a4aea8] text-xs">
+                <div className="w-7 h-7 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#2563EB] text-xs">
                   <i className="fa-solid fa-users"></i>
                 </div>
               </div>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-bold text-white font-mono">{candidatesList.length}</span>
+                <span className="text-3xl font-bold text-[#0F172A] font-mono">{candidatesList.length}</span>
               </div>
               <span className="text-[11px] font-mono text-slate-500">Across all cohorts</span>
             </div>
 
-            <div className="p-5 bg-[#02140e] border border-[#2b3b33] rounded-2xl flex flex-col justify-between gap-4">
+            <div className="p-5 bg-white border border-blue-100 rounded-2xl flex flex-col justify-between gap-4 shadow-sm">
               <div className="flex justify-between items-center">
                 <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">Started</span>
-                <div className="w-7 h-7 rounded-lg bg-[#26372f] border border-[#34443c] flex items-center justify-center text-[#a4aea8] text-xs">
+                <div className="w-7 h-7 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#2563EB] text-xs">
                   <i className="fa-solid fa-play"></i>
                 </div>
               </div>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-bold text-white font-mono">{startedCount}</span>
+                <span className="text-3xl font-bold text-[#0F172A] font-mono">{startedCount}</span>
               </div>
               <span className="text-[11px] font-mono text-slate-500">{participationRate}% participation</span>
             </div>
 
-            <div className="p-5 bg-[#02140e] border border-[#2b3b33] rounded-2xl flex flex-col justify-between gap-4">
+            <div className="p-5 bg-white border border-blue-100 rounded-2xl flex flex-col justify-between gap-4 shadow-sm">
               <div className="flex justify-between items-center">
                 <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">In progress</span>
-                <div className="w-7 h-7 rounded-lg bg-[#26372f] border border-[#34443c] flex items-center justify-center text-[#a4aea8] text-xs">
+                <div className="w-7 h-7 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#2563EB] text-xs">
                   <i className="fa-regular fa-clock"></i>
                 </div>
               </div>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-bold text-white font-mono">{inProgressCount}</span>
+                <span className="text-3xl font-bold text-[#0F172A] font-mono">{inProgressCount}</span>
               </div>
               <span className="text-[11px] font-mono text-slate-500">Currently active</span>
             </div>
 
-            <div className="p-5 bg-[#02140e] border border-[#2b3b33] rounded-2xl flex flex-col justify-between gap-4">
+            <div className="p-5 bg-white border border-blue-100 rounded-2xl flex flex-col justify-between gap-4 shadow-sm">
               <div className="flex justify-between items-center">
                 <span className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">Completed</span>
-                <div className="w-7 h-7 rounded-lg bg-[#26372f] border border-[#34443c] flex items-center justify-center text-[#a3c2a7] text-xs">
+                <div className="w-7 h-7 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#2563EB] text-xs">
                   <i className="fa-solid fa-check"></i>
                 </div>
               </div>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl font-bold text-white font-mono">{completedCount}</span>
+                <span className="text-3xl font-bold text-[#0F172A] font-mono">{completedCount}</span>
               </div>
               <span className="text-[11px] font-mono text-slate-500">Ready for scorecard review</span>
             </div>
           </div>
 
           <div className="flex flex-col gap-5 pt-2">
-            <div className="flex items-center justify-between text-xs font-mono text-slate-400 px-1">
+            <div className="flex items-center justify-between text-xs font-mono text-slate-500 px-1">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#8fbd98] animate-pulse"></span>
-                <span className="text-white font-semibold">BACKEND ACTIVITY</span>
+                <span className="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse"></span>
+                <span className="text-[#0F172A] font-semibold">BACKEND ACTIVITY</span>
                 <span>· Candidate activity updates automatically</span>
               </div>
               <span>Auto-refreshes every 15 seconds</span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 p-4 bg-[#02140e] border border-[#2b3b33] rounded-xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 p-4 bg-white border border-blue-100 rounded-xl shadow-sm">
               <div className="lg:col-span-2 relative">
-                <i className="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-500"></i>
+                <i className="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-400"></i>
                 <input
                   type="text"
                   placeholder="Search candidates by name or email"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-[#202f28] border border-[#34483d] rounded-lg pl-9 pr-3 py-1.5 text-xs text-[#d3dbd5] placeholder-[#89978f] focus:outline-none focus:border-[#78ad84] font-sans"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-lg pl-9 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#2563EB] font-sans"
                 />
               </div>
 
@@ -267,7 +267,7 @@ function CandidatesMonitoring() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="w-full bg-[#202f28] border border-[#34483d] rounded-lg px-3 py-1.5 text-xs text-[#c3cdc6] focus:outline-none focus:border-[#78ad84] font-mono cursor-pointer"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-[#2563EB] font-mono cursor-pointer"
                 >
                   <option value="All">Status: All</option>
                   <option value="In progress">In progress</option>
@@ -280,7 +280,7 @@ function CandidatesMonitoring() {
                 <select
                   value={progressFilter}
                   onChange={(e) => setProgressFilter(e.target.value)}
-                  className="w-full bg-[#202f28] border border-[#34483d] rounded-lg px-3 py-1.5 text-xs text-[#c3cdc6] focus:outline-none focus:border-[#78ad84] font-mono cursor-pointer"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-[#2563EB] font-mono cursor-pointer"
                 >
                   <option value="All">Progress: All</option>
                   <option value="50%">&gt;= 50%</option>
@@ -292,7 +292,7 @@ function CandidatesMonitoring() {
                 <select
                   value={sortOrder}
                   onChange={(e) => setSortOrder(e.target.value)}
-                  className="w-full bg-[#202f28] border border-[#34483d] rounded-lg px-3 py-1.5 text-xs text-[#c3cdc6] focus:outline-none focus:border-[#78ad84] font-mono cursor-pointer"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-1.5 text-xs text-slate-700 focus:outline-none focus:border-[#2563EB] font-mono cursor-pointer"
                 >
                   <option value="Latest activity">Sort: Latest activity</option>
                   <option value="Name">Sort: Name</option>
@@ -302,56 +302,56 @@ function CandidatesMonitoring() {
             </div>
           </div>
 
-          <div className="bg-[#02140e] border border-[#2b3b33] rounded-2xl overflow-hidden">
-            {loadError && <div className="mb-4 rounded-lg border border-red-900/50 bg-red-950/30 px-4 py-3 text-sm text-red-200" role="alert">{loadError}</div>}
-            {loading && <p className="mb-4 text-sm font-mono text-slate-400">Loading candidates from backend…</p>}
+          <div className="bg-white border border-blue-100 rounded-2xl overflow-hidden shadow-sm">
+            {loadError && <div className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600 shadow-sm" role="alert">{loadError}</div>}
+            {loading && <p className="mb-4 text-sm font-mono text-slate-500 p-4">Loading candidates from backend…</p>}
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="border-b border-[#2a3932] text-[10px] font-mono text-[#94a199] uppercase tracking-wider bg-[#02140e]">
-                    <th className="py-3 px-4 font-medium">Candidate</th>
-                    <th className="py-3 px-4 font-medium">Email</th>
-                    <th className="py-3 px-4 font-medium">Status</th>
-                    <th className="py-3 px-4 font-medium">Progress</th>
-                    <th className="py-3 px-4 font-medium">Last activity</th>
-                    <th className="py-3 px-4 font-medium text-right">Action</th>
+                  <tr className="border-b border-blue-100 text-[10px] font-mono text-[#2563EB] uppercase tracking-wider bg-blue-50/50">
+                    <th className="py-3 px-4 font-bold">Candidate</th>
+                    <th className="py-3 px-4 font-bold">Email</th>
+                    <th className="py-3 px-4 font-bold">Status</th>
+                    <th className="py-3 px-4 font-bold">Progress</th>
+                    <th className="py-3 px-4 font-bold">Last activity</th>
+                    <th className="py-3 px-4 font-bold text-right">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#2a3932] text-xs">
+                <tbody className="divide-y divide-blue-100 text-xs">
                   {filteredCandidates.map((candidate, index) => (
-                    <tr key={index} className="hover:bg-[#202f28] transition-colors">
+                    <tr key={index} className="hover:bg-blue-50/50 transition-colors">
                       <td className="py-3.5 px-4">
                         <div className="flex items-center gap-3">
-                          <div className={`w-7 h-7 rounded-lg ${index % 2 === 0 ? "bg-[#30483c]" : "bg-[#303e4d]"} text-[#dce5dd] flex items-center justify-center font-mono font-bold text-xs shrink-0`}>
+                          <div className={`w-7 h-7 rounded-lg ${index % 2 === 0 ? "bg-blue-100 text-[#2563EB]" : "bg-slate-200 text-slate-700"} flex items-center justify-center font-mono font-bold text-xs shrink-0 shadow-sm`}>
                             {candidate.initials || (candidate.name ? candidate.name.substring(0, 2).toUpperCase() : "CN")}
                           </div>
                           <div className="flex flex-col min-w-0">
-                            <span className="font-bold text-white truncate">{candidate.name}</span>
-                            <span className="text-[10px] font-mono text-slate-400 truncate">{candidate.role}</span>
+                            <span className="font-bold text-[#0F172A] truncate">{candidate.name}</span>
+                            <span className="text-[10px] font-mono text-slate-500 truncate">{candidate.role}</span>
                           </div>
                         </div>
                       </td>
-                      <td className="py-3.5 px-4 font-mono text-slate-300">
+                      <td className="py-3.5 px-4 font-mono text-slate-600">
                         {candidate.email}
                       </td>
                       <td className="py-3.5 px-4 font-mono">
                         <div className="flex items-center gap-2">
-                          <span className={`w-1.5 h-1.5 rounded-full ${candidate.status === "Completed" ? "bg-[#a8c5ad]" : "bg-[#8fb69a] animate-pulse"}`}></span>
-                          <span className="text-slate-300">{candidate.status}</span>
+                          <span className={`w-1.5 h-1.5 rounded-full ${candidate.status === "Completed" ? "bg-[#2563EB]" : "bg-blue-400 animate-pulse"}`}></span>
+                          <span className="text-slate-700">{candidate.status}</span>
                         </div>
                       </td>
                       <td className="py-3.5 px-4 font-mono">
                         <div className="flex flex-col gap-1 w-36">
-                          <div className="flex justify-between items-center text-[10px] text-slate-400">
+                          <div className="flex justify-between items-center text-[10px] text-slate-500">
                             <span>{candidate.tasksCompleted || "0 / 6 tasks"}</span>
                             <span>{candidate.percentage || "0%"}</span>
                           </div>
-                          <div className="w-full bg-[#34443b] h-1.5 rounded-full overflow-hidden">
-                            <div className="bg-[#a2c4a9] h-full rounded-full" style={{ width: candidate.progressWidth || candidate.percentage || "0%" }}></div>
+                          <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                            <div className="bg-[#2563EB] h-full rounded-full" style={{ width: candidate.progressWidth || candidate.percentage || "0%" }}></div>
                           </div>
                         </div>
                       </td>
-                      <td className="py-3.5 px-4 font-mono text-slate-400">
+                      <td className="py-3.5 px-4 font-mono text-slate-500">
                         {candidate.lastActivity || "No activity yet"}
                       </td>
                       <td className="py-3.5 px-4 text-right">
@@ -363,7 +363,7 @@ function CandidatesMonitoring() {
                             navigate(`/recruiter/candidates/${candidate.attemptId}/review`);
                           }}
                           disabled={!candidate.attemptId}
-                          className="text-xs font-mono text-[#a3c1a8] hover:underline cursor-pointer disabled:text-slate-600 disabled:cursor-not-allowed"
+                          className="text-xs font-mono text-[#2563EB] hover:underline cursor-pointer disabled:text-slate-400 disabled:cursor-not-allowed bg-transparent border-none"
                         >
                           {candidate.attemptId ? "View scorecard →" : "Not started"}
                         </button>
@@ -381,19 +381,18 @@ function CandidatesMonitoring() {
               </table>
             </div>
 
-            <div className="p-4 border-t border-[#2a3932] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-[#a4aea8]">
+            <div className="p-4 border-t border-blue-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-slate-500">
               <span>Showing 1-{filteredCandidates.length} of {candidatesList.length} candidates</span>
-
             </div>
           </div>
 
-          <footer className="pt-6 border-t border-[#26352e] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#89978f]">
+          <footer className="pt-6 border-t border-blue-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
             <div>
               <span>SmartRecruit · Recruiter workspace</span>
             </div>
             <div className="flex gap-4">
               <span>Candidate activity is logged for assessment review.</span>
-              <span className="hover:text-white cursor-pointer">Security · Candidate privacy · Help</span>
+              <span className="hover:text-[#0F172A] cursor-pointer">Security · Candidate privacy · Help</span>
             </div>
           </footer>
 
@@ -402,4 +401,5 @@ function CandidatesMonitoring() {
     </div>
   );
 }
+
 export default CandidatesMonitoring;

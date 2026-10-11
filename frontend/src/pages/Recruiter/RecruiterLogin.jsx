@@ -64,7 +64,7 @@ function RecruiterLogin() {
       <div className="w-full md:w-[42%] min-h-screen flex items-center justify-center px-6 sm:px-12 py-12 overflow-y-auto">
         <div className="w-full max-w-md">
           <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
-            Welcome to <span className="text-emerald-700">SmartRecruit</span>
+            Welcome to <span className="text-[#2563EB]">SmartRecruit</span>
           </h1>
           <p className="mt-2 text-slate-500 text-sm">
             Login to continue to your recruiter workspace.
@@ -73,14 +73,14 @@ function RecruiterLogin() {
           <div className="flex p-1 bg-slate-100 border border-slate-200 rounded-xl mt-6">
             <button
               type="button"
-              className="w-1/2 py-2.5 text-slate-600 font-medium hover:text-slate-900 transition-all"
+              className="w-1/2 py-2.5 text-slate-600 font-medium hover:text-slate-900 transition-all cursor-pointer bg-transparent border-none"
               onClick={() => navigate("/candidate/login")}
             >
               I'm a Candidate
             </button>
             <button
               type="button"
-              className="w-1/2 py-2.5 bg-emerald-700 text-white font-medium rounded-lg shadow-sm transition-all"
+              className="w-1/2 py-2.5 bg-[#2563EB] text-white font-medium rounded-lg shadow-sm transition-all cursor-pointer border-none"
               onClick={() => navigate("/recruiter/login")}
             >
               I'm a Recruiter
@@ -97,7 +97,7 @@ function RecruiterLogin() {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
-                className="w-full h-11 bg-white border border-slate-200 rounded-xl px-4 text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-700 transition-all"
+                className="w-full h-11 bg-white border border-slate-200 rounded-xl px-4 text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#2563EB] transition-all font-sans"
                 required
               />
             </div>
@@ -112,14 +112,14 @@ function RecruiterLogin() {
                   placeholder="Enter your password"
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
-                  className="w-full h-11 bg-white border border-slate-200 rounded-xl px-4 pr-12 text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-700 transition-all"
+                  className="w-full h-11 bg-white border border-slate-200 rounded-xl px-4 pr-12 text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-[#2563EB] transition-all font-sans"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword((visible) => !visible)}
                   aria-label={showPassword ? "Hide password" : "Show password"}
-                  className="absolute right-3.5 top-3 text-slate-400 hover:text-slate-600 text-sm"
+                  className="absolute right-3.5 top-3 text-slate-400 hover:text-slate-600 text-sm bg-transparent border-none cursor-pointer"
                 >
                   {showPassword ? <i className="fa-regular fa-eye-slash"></i> : <i className="fa-regular fa-eye"></i>}
                 </button>
@@ -130,7 +130,7 @@ function RecruiterLogin() {
               <button
                 type="button"
                 onClick={() => navigate("/recruiter/reset-password")}
-                className="text-xs text-emerald-700 font-semibold hover:underline cursor-pointer"
+                className="text-xs text-[#2563EB] font-semibold hover:underline cursor-pointer bg-transparent border-none p-0"
               >
                 Forgot password?
               </button>
@@ -139,7 +139,7 @@ function RecruiterLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full h-11 bg-emerald-700 hover:bg-emerald-800 active:scale-[0.99] text-white rounded-xl font-medium shadow-md shadow-emerald-700/20 transition-all cursor-pointer disabled:bg-emerald-400 disabled:cursor-not-allowed"
+              className="w-full h-11 bg-[#2563EB] hover:bg-[#1D4ED8] active:scale-[0.99] text-white rounded-xl font-medium shadow-md shadow-blue-500/20 transition-all cursor-pointer disabled:bg-blue-300 disabled:cursor-not-allowed border-none"
             >
               {loading ? "Logging in..." : "Login"}
             </button>
@@ -148,7 +148,7 @@ function RecruiterLogin() {
           {message && (
             <div
               className={`mt-4 text-center text-sm ${
-                message.includes("successful") ? "text-emerald-700" : "text-red-600"
+                message.includes("successful") ? "text-[#2563EB]" : "text-red-600"
               }`}
               role="status"
             >
@@ -161,7 +161,7 @@ function RecruiterLogin() {
             <button
               type="button"
               onClick={() => navigate("/recruiter/signup")}
-              className="ml-1.5 text-emerald-700 font-semibold hover:underline cursor-pointer"
+              className="ml-1.5 text-[#2563EB] font-semibold hover:underline cursor-pointer bg-transparent border-none p-0"
             >
               Create Account
             </button>
