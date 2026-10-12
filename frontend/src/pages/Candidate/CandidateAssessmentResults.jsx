@@ -343,7 +343,7 @@ function CandidateAssessmentResults() {
       </main>
 
       <footer className="bg-white border-t border-blue-100 px-6 py-4 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-        <span>© 2026 SmartRecruit Inc. All candidate rights reserved.</span>
+        <span>©️ 2026 SmartRecruit Inc. All candidate rights reserved.</span>
         <div className="flex gap-4 mt-2 sm:mt-0">
           <span className="hover:text-[#0F172A] cursor-pointer">Privacy Policy</span>
           <span>·</span>
