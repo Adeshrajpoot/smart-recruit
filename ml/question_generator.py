@@ -1,6 +1,6 @@
 import json
 from google import genai
-from google.genai import errors
+from google.genai import errors, types
 import time
 
 with open("candidate_profile.json", "r", encoding="utf-8") as file:
@@ -234,33 +234,151 @@ Verify all of the following:
 CANDIDATE DATA:
 ''' + json.dumps(candidate, ensure_ascii=False, indent=2)
 
-i = 0
-while i == 0:
+
+models = [
+    "gemini-3.5-flash-lite",
+    "gemini-3.8-flash"
+]
+
+response = None
+last_error = None
+
+for model in models:
     try:
+        print(f"Generating interview questions with {model}...")
+
         response = client.models.generate_content(
-            model="gemini-3.5-flash-lite",
-            contents=prompt
-        )
-        i = 1
-    except errors.ServerError as e:
-        if e.code == 503:
-            print("Server busy. Retrying in 15 seconds...")
-            time.sleep(15)
-    except errors.ClientError as e:
-        if e.code == 429:
-            print("Rate limit reached. Switching to Gemini 3.7 Flash...")
-            response = client.models.generate_content(
-                model="gemini-3.5-flash",
-                contents=prompt
+            model=model,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                temperature=0.2,
+                max_output_tokens=20000
             )
-            i = 1
+        )
 
-questions = json.loads(response.text)
+        if not response.text:
+            raise ValueError(
+                f"{model} returned an empty response."
+            )
 
-with open("questions.json", "w", encoding="utf-8") as file:
-    json.dump(
-        questions,
-        file,
-        indent=4,
-        ensure_ascii=False
-    )
+        questions = json.loads(response.text)
+
+        if not isinstance(questions, dict):
+            raise ValueError(
+                "The response must be a JSON object."
+            )
+
+        question_list = questions.get("questions")
+
+        if not isinstance(question_list, list):
+            raise ValueError(
+                "The response does not contain a questions list."
+            )
+
+        if len(question_list) != 45:
+            raise ValueError(
+                f"Expected 45 questions, received {len(question_list)}."
+            )
+
+        expected_counts = {
+            "easy": 14,
+            "medium": 16,
+            "hard": 15
+        }
+
+        actual_counts = {
+            difficulty: sum(
+                1
+                for question in question_list
+                if question.get("difficulty") == difficulty
+            )
+            for difficulty in expected_counts
+        }
+
+        if actual_counts != expected_counts:
+            raise ValueError(
+                f"Incorrect difficulty distribution: {actual_counts}"
+            )
+
+        for index, question in enumerate(question_list, start=1):
+            if question.get("question no.") != str(index):
+                raise ValueError(
+                    f"Question {index} has an incorrect question number."
+                )
+
+            options = question.get("options")
+
+            if not isinstance(options, dict) or set(options) != {
+                "A", "B", "C", "D"
+            }:
+                raise ValueError(
+                    f"Question {index} must have options A, B, C and D."
+                )
+
+            if question.get("correct_answer") not in {
+                "A", "B", "C", "D"
+            }:
+                raise ValueError(
+                    f"Question {index} has an invalid correct_answer."
+                )
+
+            if question.get("source") not in {
+                "Resume", "GitHub", "Resume + GitHub"
+            }:
+                raise ValueError(
+                    f"Question {index} has an invalid source."
+                )
+
+            if not question.get("reference"):
+                raise ValueError(
+                    f"Question {index} is missing its evidence reference."
+                )
+
+        with open(
+            "questions.json",
+            "w",
+            encoding="utf-8"
+        ) as file:
+            json.dump(
+                questions,
+                file,
+                indent=4,
+                ensure_ascii=False
+            )
+
+        print(
+            f"Successfully generated and validated "
+            f"{len(question_list)} questions using {model}."
+        )
+
+        break
+
+    except (errors.ServerError, errors.ClientError) as error:
+        last_error = error
+        status = getattr(error, "code", None)
+
+        if status not in (429, 503):
+            raise
+
+        print(
+            f"{model} failed with HTTP {status}. "
+            "Trying the next configured model."
+        )
+
+        response = None
+
+    except (json.JSONDecodeError, ValueError) as error:
+        last_error = error
+
+        print(
+            f"{model} returned invalid interview output: {error}"
+        )
+
+        response = None
+
+if response is None:
+    raise RuntimeError(
+        "Interview generation failed for every configured model. "
+        "Check the preceding error messages and Gemini quota."
+    ) from last_error
