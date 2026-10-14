@@ -238,7 +238,7 @@ i = 0
 while i == 0:
     try:
         response = client.models.generate_content(
-            model="gemini-3.5-flash",
+            model="gemini-3.5-flash-lite",
             contents=prompt
         )
         i = 1
@@ -250,7 +250,7 @@ while i == 0:
         if e.code == 429:
             print("Rate limit reached. Switching to Gemini 3.7 Flash...")
             response = client.models.generate_content(
-                model="gemini-3.6-flash",
+                model="gemini-3.5-flash",
                 contents=prompt
             )
             i = 1
