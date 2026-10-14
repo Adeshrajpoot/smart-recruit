@@ -12,224 +12,229 @@ api_key = GEMINI_API_KEY
 client = genai.Client(api_key=api_key)
 
 
-prompt = '''You are an expert technical interviewer.
 
-Analyze the candidate's Resume and GitHub data and generate exactly **45 personalized technical multiple-choice questions (MCQs)** designed to be completed in approximately **90 minutes**.
+prompt = '''You are an expert technical interviewer who evaluates actual technical understanding, conceptual knowledge, problem-solving ability, and engineering judgment.
 
-RULES:
+Analyze the candidate's Resume and GitHub data and generate exactly 45 personalized technical multiple-choice questions (MCQs) designed to be completed in approximately 90 minutes.
 
-1. Generate exactly **45 questions**.
+PRIMARY OBJECTIVE:
 
-2. The 45 questions should be reasonably solvable within **90 minutes**. Questions should test technical understanding and reasoning without being unnecessarily long or repetitive.
+Test what the candidate UNDERSTANDS, not what the candidate can MEMORIZE from their own files.
 
-3. Every question must be grounded in **explicit information present in the candidate data**.
+Questions must primarily test:
+- Theoretical and conceptual understanding
+- Application of technical principles
+- Problem-solving and debugging reasoning
+- Algorithms and data structures
+- Design choices and trade-offs
+- Model training, evaluation, and optimization
+- System behavior under realistic conditions
+- Understanding of why a technique works and when it should be used
 
-4. Never invent or assume:
-   - skills
-   - technologies
-   - tools
-   - architectures
-   - implementations
-   - responsibilities
-   - algorithms
-   - results
-   - configurations
-   - project features
-   - performance metrics
+PERSONALIZATION RULES:
 
-5. Distinguish between:
-   - **IMPLEMENTED**: explicitly shown as implemented by the candidate.
-   - **USED**: a technology or tool explicitly mentioned but without evidence of a specific implementation.
-   - **HYPOTHETICAL**: a technical scenario that extends an explicitly mentioned technology, project, or implementation.
+1. Use the candidate's Resume and GitHub data to identify technologies, projects, technical areas, and implementations that can provide meaningful context for a question.
 
-6. Never treat a "USED" technology as proof that the candidate implemented a specific feature.
+2. Every question must relate to at least one technology, project, skill, or technical area explicitly supported by the candidate data.
+
+3. Use candidate information to select the subject and context of a question. Do not turn every detail in the candidate data into a question.
+
+4. Distinguish between:
+   - IMPLEMENTED: explicitly demonstrated in the candidate data.
+   - USED: explicitly mentioned, but a specific implementation is not demonstrated.
+   - HYPOTHETICAL: a new technical situation based on a documented technology or project.
+
+5. Never claim that the candidate implemented a feature unless the data supports that claim.
+
+6. Hypothetical questions must clearly describe a hypothetical situation using wording such as:
+   - "Suppose..."
+   - "If you had to..."
+   - "What would happen if..."
+   - "How would you approach..."
+   - "Which approach would be most appropriate when..."
+
+THEORETICAL AND APPLIED QUESTION RULES:
+
+7. Questions must test concepts, principles, reasoning, and applications rather than recall of exact details from the candidate's files.
+
+8. Prefer questions about WHY something works, HOW a concept should be applied, WHEN an approach is appropriate, and WHAT would happen under a changed condition.
+
+9. Include realistic technical scenarios that require candidates to apply their knowledge to select the best solution.
+
+10. Test the underlying concepts of a candidate's projects instead of asking them to repeat their own project configuration.
+
+11. A question may use a project or technology mentioned in the candidate data as context, but the correct answer must demonstrate technical understanding.
+
+12. Questions must be independently answerable using technical knowledge and the information provided in the question. Candidates must not need to remember the exact contents of their resume, repository files, or configuration.
+
+13. Do not ask candidates to recall:
+   - The exact localhost address used in their project
+   - The port number configured in their project
+   - The exact URL, hostname, IP address, or deployment address
+   - The exact names or values of environment variables
+   - The exact filename, folder name, or API endpoint used in their project
+   - The exact package version or dependency version
+   - The exact database connection string or configuration value
+   - The exact API key, credential, identifier, or secret
+   - Arbitrary numeric values from source code or configuration files
+   - Literal implementation details that do not test a broader technical concept
+
+14. Do not ask questions such as:
+   - "Which port did your backend use?"
+   - "What localhost URL was configured in your project?"
+   - "What was the name of the environment variable in your code?"
+   - "Which exact endpoint did you use in your implementation?"
+   - "Which version of a package was installed?"
+   - "What value did you store in your configuration file?"
+
+15. Instead, test the concept behind such details.
 
    BAD:
-   "You configured Redis eviction policies."
+   "Which localhost URL did you use for your backend?"
 
    GOOD:
-   "You used Redis. If the cache reached its memory limit, which eviction strategy could you consider?"
+   "Suppose a frontend and backend are deployed as separate services. Why can a localhost URL that works during local development fail when the frontend is deployed?"
 
-7. Factual questions must describe only actions, implementations, technologies, results, or responsibilities explicitly supported by the candidate data.
+   BAD:
+   "Which port number did you configure for the API?"
 
-8. Hypothetical questions must clearly indicate that they are hypothetical by using wording such as:
-   - "If you had to..."
-   - "How would you..."
-   - "What would you do if..."
-   - "Suppose..."
+   GOOD:
+   "If a hosting platform dynamically assigns a port to a backend service, how should the application choose the port on which its server listens?"
 
-9. Focus questions on:
-   - implementation
-   - code
-   - debugging
-   - algorithms
-   - data structures
-   - model evaluation
-   - preprocessing
-   - training
-   - optimization
-   - architecture
-   - technical trade-offs
-   - performance
-   - technical reasoning
+   BAD:
+   "What environment variable name was used for your API key?"
 
-10. For GitHub evidence, prioritize:
-    - actual source code
-    - libraries
-    - algorithms
-    - configurations
-    - preprocessing
-    - experiments
-    - model architecture
-    - training
-    - evaluation
-    - results
-    - project-specific implementation details
+   GOOD:
+   "Why should an API key be stored in a server-side environment variable rather than embedded in client-side JavaScript?"
 
-    Only use information explicitly present in the GitHub data.
+   BAD:
+   "Which exact model version did your repository use?"
 
-11. For Resume evidence, prioritize:
-    - explicitly documented responsibilities
-    - technologies
-    - projects
-    - implementations
-    - measurable achievements
-    - technical experience
+   GOOD:
+   "When comparing two classification models, which evaluation evidence would help determine whether one generalizes better to unseen data?"
 
-12. Avoid generic questions such as:
-    - "What is Python?"
-    - "What is machine learning?"
-    - "What is AWS?"
+16. Do not make every question a debugging question. Balance conceptual theory, practical application, algorithms, reasoning, architecture, evaluation, and trade-offs.
 
-    Questions should be personalized to the candidate's actual Resume and GitHub evidence.
+17. Use code snippets only when they are short and help test a concept. Do not ask candidates to memorize the exact code already in their repository.
 
-13. Cover different projects, technologies, and technical areas represented in the candidate data.
+18. Do not test undocumented personal configuration details. Configuration values may appear in a hypothetical scenario only when needed to explain the problem, not as facts the candidate must recall.
 
-14. Avoid duplicate questions. Do not ask the same concept repeatedly with only minor wording changes.
+TECHNICAL CONTENT RULES:
 
-15. Difficulty distribution must be exactly:
-    - **14 easy**
-    - **16 medium**
-    - **15 hard**
+19. Focus on technical understanding relevant to the candidate's documented skills, including:
+   - Algorithms and data structures
+   - Programming language concepts
+   - Object-oriented programming
+   - Database principles and query behavior
+   - API design and HTTP behavior
+   - Authentication and security principles
+   - Frontend and backend architecture
+   - Machine learning algorithms
+   - Data preprocessing and feature engineering
+   - Model evaluation and generalization
+   - Deep learning and neural network behavior
+   - Computer vision concepts
+   - Training, validation, overfitting, and optimization
+   - Software testing and debugging
+   - Performance, scalability, and technical trade-offs
 
-    Total: **45 questions**.
+20. Only test subject areas supported by the candidate data. Do not introduce unrelated technologies just to make a question harder.
 
-    Generate the questions in this order:
-    - Questions 1–14: easy
-    - Questions 15–30: medium
-    - Questions 31–45: hard
+21. For GitHub evidence, use source code and project descriptions to identify meaningful concepts, algorithms, libraries, and design decisions. Do not turn filenames, URLs, configuration values, or individual code literals into trivia questions.
 
-16. Every question must contain exactly **four plausible options**:
-    - A
-    - B
-    - C
-    - D
+22. For Resume evidence, use documented projects, responsibilities, skills, and achievements to choose relevant technical topics. Do not simply ask the candidate to repeat a resume statement.
 
-17. Each question must have **exactly one correct answer**.
+23. Cover different supported technical areas. Avoid generating 45 variations of the same concept.
 
-18. Do not use:
-    - "All of the above"
-    - "None of the above"
+24. Avoid duplicate questions and near-duplicates that test the same underlying principle with only slightly different wording.
 
-19. Randomize the position of the correct answer across A, B, C, and D. Do not always place the correct answer in the same position.
+DIFFICULTY RULES:
 
-20. The `"correct_answer"` field must contain exactly one of:
-    - `"A"`
-    - `"B"`
-    - `"C"`
-    - `"D"`
+25. Generate exactly:
+   - 14 easy questions
+   - 16 medium questions
+   - 15 hard questions
 
-    It must correspond exactly to the correct option.
+26. Generate questions in this order:
+   - Questions 1-14: easy
+   - Questions 15-30: medium
+   - Questions 31-45: hard
 
-21. The `"source"` field must contain exactly one of:
-    - `"Resume"`
-    - `"GitHub"`
-    - `"Resume + GitHub"`
+27. Easy questions must test foundational concepts and straightforward applications.
 
-22. The `"reference"` field must identify the specific evidence used to construct the question, such as:
-    - project
-    - repository
-    - source file
-    - technology
-    - implementation
-    - responsibility
-    - algorithm
-    - experiment
-    - documented result
+28. Medium questions must require applying concepts, interpreting a situation, or choosing an appropriate technical approach.
 
-23. The `"reference"` must contain only evidence that actually exists in the candidate data.
+29. Hard questions must require deeper reasoning, analysis of trade-offs, combining related concepts, or diagnosing a more complex situation. Hard questions must not merely ask for obscure configuration values.
 
-24. The `"topic"` field must identify the specific technical area being tested, such as:
-    - Python
-    - Machine Learning
-    - Deep Learning
-    - SQL
-    - APIs
-    - React
-    - Data Structures
-    - Algorithms
-    - Model Evaluation
-    - Computer Vision
-    - Backend Development
+MCQ RULES:
 
-    Only use topics supported by the candidate data.
+30. Every question must have exactly four plausible options labelled A, B, C, and D.
 
-25. The `"difficulty"` field must contain exactly one of:
-    - `"easy"`
-    - `"medium"`
-    - `"hard"`
+31. Exactly one option must be correct.
 
-26. Do not include explanations, solutions, reasoning, or answer explanations in the output.
+32. Randomize the correct answer position. Do not consistently put the correct answer under the same letter.
 
-27. Do not include any text before or after the JSON.
+33. Do not use "All of the above" or "None of the above".
 
-28. Return **only valid JSON** matching the following structure:
+34. Distractors must be plausible but technically incorrect. They should distinguish between different levels of understanding rather than rely on confusing wording.
+
+35. Avoid ambiguous questions where more than one option could reasonably be correct. Include enough context to make one answer clearly best.
+
+OUTPUT RULES:
+
+36. Return only valid JSON. Do not include Markdown fences, explanations, introductions, or text outside the JSON.
+
+37. Use exactly this structure:
 
 {
-    "questions": [
-        {
-            "question no.": "1",
-            "question": "...",
-            "options": {
-                "A": "...",
-                "B": "...",
-                "C": "...",
-                "D": "..."
-            },
-            "correct_answer": "B",
-            "source": "GitHub",
-            "reference": "...",
-            "topic": "...",
-            "difficulty": "easy"
-        }
-    ]
+  "questions": [
+    {
+      "question no.": "1",
+      "question": "A theoretical or scenario-based technical question...",
+      "options": {
+        "A": "First option",
+        "B": "Second option",
+        "C": "Third option",
+        "D": "Fourth option"
+      },
+      "correct_answer": "B",
+      "source": "GitHub",
+      "reference": "The documented project, skill, or technical evidence supporting the topic",
+      "topic": "A supported technical area",
+      "difficulty": "easy"
+    }
+  ]
 }
 
-FINAL VALIDATION BEFORE RETURNING:
+38. The "correct_answer" must contain exactly one of "A", "B", "C", or "D", and it must match the correct option.
 
-Verify all of the following:
+39. The "source" must contain exactly one of:
+   - "Resume"
+   - "GitHub"
+   - "Resume + GitHub"
 
-- Exactly **45 questions**
-- Questions numbered sequentially from **1 to 45**
-- Exactly **14 easy questions**
-- Exactly **16 medium questions**
-- Exactly **15 hard questions**
-- Exactly **4 options per question**
-- Options are exactly A, B, C, and D
-- Exactly one correct answer per question
-- `"correct_answer"` matches the correct option
-- `"source"` contains only an allowed value
-- `"difficulty"` contains only an allowed value
-- `"reference"` is supported by candidate data
-- No invented candidate information
-- No duplicate questions
-- No "All of the above"
-- No "None of the above"
-- Questions are personalized to the candidate
-- Questions are appropriate for approximately 90 minutes
-- Output is valid JSON
-- Do not output Markdown code fences
-- Do not output explanations or additional text
+40. The "reference" must identify real evidence from the candidate data that supports the question's subject. It must not invent projects, responsibilities, tools, results, or implementations.
+
+41. The "topic" must identify the specific technical area tested and must be supported by the candidate data.
+
+42. The "difficulty" must contain exactly one of "easy", "medium", or "hard".
+
+FINAL VALIDATION:
+
+Before returning the JSON, verify that:
+- There are exactly 45 questions.
+- Question numbers are sequential from "1" to "45".
+- There are exactly 14 easy, 16 medium, and 15 hard questions, in the required order.
+- Every question has exactly options A, B, C, and D.
+- Exactly one correct option exists for each question.
+- The correct_answer matches its option.
+- Every source and difficulty value is valid.
+- Every reference is supported by the candidate data.
+- There are no duplicate or near-duplicate questions.
+- No question asks the candidate to remember an exact project URL, localhost value, port number, environment variable, filename, endpoint, package version, credential, or other arbitrary configuration detail.
+- Questions test theoretical understanding, application, reasoning, or technical problem-solving rather than simple memorization.
+- Questions are appropriately solvable in approximately 90 minutes.
+- The final result is valid JSON and nothing else.
 
 CANDIDATE DATA:
 ''' + json.dumps(candidate, ensure_ascii=False, indent=2)
